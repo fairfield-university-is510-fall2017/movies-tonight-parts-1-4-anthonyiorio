@@ -8,9 +8,13 @@ For this step, we must:
 * Remove NULLs
 * Identify dependencies
 
-TABLE(TName, Location, Phone, <u>MTitle</u>, <u>ShowTime</u>, Rating, CCode, CName)
+TABLE(<u>TName</u>, Location, Phone, <u>MTitle</u>, <u>ShowTime</u>, Rating, <u>CCode</u>, <u>CName</u>)
 
 To convert to 1NF, I'd first eliminate any NULLs, if there are any. I could not find any from my initial analysis of the data. Identifying the Primary Key would be the next step, and given that I was not able to identify a primary key, a unique record locator should be established for each entry. I recommend using a composite key of the ShowTime and MTitle in order to create a unique Primary Key, as those columns taken in consideration with each other are not likely to be repeated.
+
+
+[MTitle -->--> (CCode, CName)]
+(TName, ShowTime) --> MTitle
 
 ### 2NF Conversion
 For this step, we must:
@@ -18,7 +22,7 @@ For this step, we must:
 * Eliminate partial dependencies by making new tables, if needed
 * Reassign the dependent attributes
 
-The naming is as follows:
+The conventions is as follows:
 determinant --> dependent
 
 TName --> (Location, Phone)
@@ -32,19 +36,36 @@ For this step, we must:
 * Eliminate transitive dependencies by making new tables, if needed
 * Reassign the non-PK determinants and dependents
 
-The naming is as follows:
+The convention is as follows:
 determinant --> dependent
 
-ShowTime
+TName --> (Location, Phone)
+MTitle --> (Rating)
+[MTitle -->--> (CCode, CName)]
+(TName, ShowTime) --> MTitle
+
+ShowTime --> (TName, MTitle)
 
 ### BCNF Conversion
 For this step, we must:
 * Already be in 3NF
 * Ensuring every determinant is a Candidate Key
 
-The naming is as follows:
-determinant --> dependent
+Our end goal was:
+THEATERS(TID, Location, Phone)
+MOVIES(MID, MTitle, Rating)
+SHOWS(SID, TID, ShowTime, MID)
+CREDITS(CID, MID, CName, CCode)
 
+Additionally, we may want to futureproof it, so it would be wise to add another column (like, say, 'Bio'):
+TABLE(<u>TName</u>, Location, Phone, <u>MTitle</u>, <u>ShowTime</u>, Rating, <u>CCode</u>, <u>CName</u>, Bio)
+
+This would make our end goal:
+THEATERS(TID, Location, Phone)
+MOVIES(MID, MTitle, Rating)
+SHOWS(SID, TID, ShowTime, MID)
+CREDITS(CID, MID, CName, CCode)
+ARTISTS(AID, Name, Bio)
 
 ## Entity Relationship Model
 The entity relationship model is displayed below.
