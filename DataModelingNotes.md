@@ -30,7 +30,7 @@ TABLE(TName, <u>MTitle</u>, <u>ShowTime</u>, CCode, CName)
 For this step, we must:
 * Already be in 2NF
 * Eliminate transitive dependencies by making new tables, if needed
-* Reassign the non-PK determinants and dependants
+* Reassign the non-PK determinants and dependents
 
 The naming is as follows:
 determinant --> dependent
