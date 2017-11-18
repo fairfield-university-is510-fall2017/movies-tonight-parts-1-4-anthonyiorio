@@ -36,3 +36,19 @@ CREATE TABLE Theater (
     Phone int(10) default NULL,
     PRIMARY KEY (ID)
 );
+    
+ALTER TABLE Credit
+  ADD FOREIGN KEY (ArtistID)
+    REFERENCES Artist (ID);
+
+ALTER TABLE Credit
+  ADD FOREIGN KEY (MovieID)
+    REFERENCES Movie (ID);
+
+ALTER TABLE ShowTime
+  ADD FOREIGN KEY (MovieID)
+    REFERENCES Movie (ID);
+    
+ALTER TABLE ShowTime
+  ADD FOREIGN KEY (TheaterID)
+    REFERENCES Theater (ID);
