@@ -18,9 +18,13 @@ For this step, we must:
 * Eliminate partial dependencies by making new tables, if needed
 * Reassign the dependent attributes
 
+The naming is as follows:
 determinant --> dependent
+
 TName --> (Location, Phone)
 MTitle --> (Rating)
+
+TABLE(TName, <u>MTitle</u>, <u>ShowTime</u>, CCode, CName)
 
 ### 3NF Conversion
 For this step, we must:
@@ -28,13 +32,20 @@ For this step, we must:
 * Eliminate transitive dependencies by making new tables, if needed
 * Reassign the non-PK determinants and dependants
 
+The naming is as follows:
+determinant --> dependent
+
+ShowTime
 
 ### BCNF Conversion
 For this step, we must:
 * Already be in 3NF
 * Ensuring every determinant is a Candidate Key
 
+The naming is as follows:
+determinant --> dependent
+
 
 ## Entity Relationship Model
 The entity relationship model is displayed below.
-![This is the entity relationship model. If you can't see the diagram, either images have been disabled in your browser, or you are reading this using an accessibility service.](MoviesTonightERD.png)
+![This is the entity relationship model. If you can't see the diagram, either images have been disabled in your browser, or you are reading this using an accessibility service or assistive technology.](MoviesTonightERD.png)
