@@ -1,5 +1,7 @@
 CREATE DATABASE MoviesTonight;
 
+USE MoviesTonight;
+
 CREATE TABLE Artist (
 	ID int(11) NOT NULL auto_increment,
     TName varchar(50) default NULL,
